@@ -1,0 +1,70 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Submit2-PWA</title>
+    <meta name="description" content="Aplikasi Informasi Sepakbola" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="stylesheet" href="css/materialize.min.css" />
+    <link rel="manifest" href="/manifest.json" />
+    <meta name="theme-color" content="#ff5722" />
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  </head>
+  <body>
+    <nav class="deep-orange" role="navigation">
+      <div class="nav-wrapper container">               
+        <a href="#" class="brand-logo"><img class="responsive-img" style="width: 63px; height: 56px" src="icon.png" alt=""></a>                                                                    
+        <a href="./index.html" data-target="nav-mobile">
+          <i class="material-icons">arrow_back</i>
+        </a>
+        <ul class="topnav right hide-on-med-and-down"></ul>
+        <ul class="sidenav" id="nav-mobile"></ul>
+      </div>
+    </nav> 
+    
+    <div class="progress">
+      <div class="indeterminate"></div>
+    </div> 
+
+    <div class="row container">
+      <h3>Profil Team</h3>
+      <div class="col s12 m12" id="detail">
+              
+      </div>
+    </div>
+
+    <footer class="site-footer deep-orange">
+      <div class="footer-copyright container">                  
+        <p style="font-size: 16px" class="white-text text-lighten-5">© 2019 | Faga <a class="right white-text text-lighten-5" href="mailto:isnakurniadewi25@gmail.com">Made by Isna</a></p>
+      </div>
+    </footer>
+
+    <script type="text/javascript" src="https://unpkg.com/snarkdown@1.0.2/dist/snarkdown.umd.js"></script>
+    <script src="js/materialize.min.js"></script>
+    <script src="js/idb.js"></script>
+    <script src="js/db.js"></script>
+    <script src="js/api.js"></script>
+
+    <script>
+      // REGISTER SERVICE WORKER
+      if ("serviceWorker" in navigator) {
+        window.addEventListener("load", function() {
+          navigator.serviceWorker
+            .register("/sw.js")
+            .then(function() {
+              console.log("Pendaftaran ServiceWorker berhasil");
+            })
+            .catch(function() {
+              console.log("Pendaftaran ServiceWorker gagal");
+            });
+        });
+      } else {
+        console.log("ServiceWorker belum didukung browser ini.");
+      }
+      document.addEventListener("DOMContentLoaded", function() {
+        M.AutoInit();
+        getTeamId(); 
+      });  
+    </script>
+  </body>
+</html>
